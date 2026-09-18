@@ -52,3 +52,12 @@ google-services.json
 
 # Verity — snapshots of analyzed files (machine state, never commit)
 .verity/.snapshot/
+
+cpen-m1.pem
+# Submission documents contain secrets (keystore password, test credentials).
+# They are submitted to Canvas as PDFs, never committed to a public repo.
+M1_Doc.md
+M1_Doc.pdf
+
+# Codex review artifacts, not part of the submission
+.review/

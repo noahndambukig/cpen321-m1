@@ -26,6 +26,15 @@ lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
 composeBom = "2025.06.01"
 
+# Networking. OkHttp 4.x is the last line that targets Java 8 bytecode and
+# compiles cleanly against compileSdk 35; 5.x wants a newer baseline.
+okhttp = "4.12.0"
+
+# Google Sign-In via Credential Manager. Deliberately NOT Firebase Auth, which the
+# Project Description forbids for major functionality.
+credentials = "1.3.0"
+googleid = "1.1.1"
+
 # Test
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -46,6 +55,10 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
+androidx-credentials-play-services = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentials" }
+googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

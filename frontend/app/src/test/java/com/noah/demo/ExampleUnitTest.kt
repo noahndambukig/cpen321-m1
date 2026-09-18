@@ -1,4 +1,4 @@
-package com.example.cpen321application
+package com.noah.demo
 
 import org.junit.Test
 

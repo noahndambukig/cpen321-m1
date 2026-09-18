@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noah_Demo</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    max-width: 42rem; margin: 0 auto; padding: 3rem 1.25rem;
+    font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  h1 { font-size: 1.9rem; margin-bottom: .25rem; }
+  .sub { color: #666; margin-top: 0; }
+  h2 { font-size: 1.15rem; margin-top: 2.25rem; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .4rem 0; }
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #8884; color: #666; font-size: .9rem; }
+  a { color: inherit; }
+  @media (prefers-color-scheme: dark) { .sub, footer { color: #aaa; } }
+</style>
+</head>
+<body>
+
+<h1>Noah_Demo</h1>
+<p class="sub">An Android application built for CPEN 321 (Software Engineering) at the
+University of British Columbia.</p>
+
+<h2>What it does</h2>
+<p>Noah_Demo is a coursework project with three independent features:</p>
+<ul>
+  <li><strong>Login and server information</strong>: signs in with Google, then
+      displays the server's and client's IP addresses and local times, retrieved over
+      HTTPS from its own back-end.</li>
+  <li><strong>Live updates</strong>: renders a 16&times;16 pixel image as it is painted
+      one cell at a time, relayed through the back-end over a websocket.</li>
+  <li><strong>Timer</strong>: a countdown that, when it reaches zero, starts a
+      memory game played with original 8-bit style sprites.</li>
+</ul>
+
+<h2>Google Sign-In</h2>
+<p>The app uses Google Sign-In only to display the signed-in user's first and last
+name on screen. It requests basic profile scopes and nothing else.</p>
+
+<h2>Links</h2>
+<ul>
+  <li><a href="privacy.html">Privacy policy</a></li>
+  <li><a href="https://github.com/noahndambukig/cpen321-m1">Source code on GitHub</a></li>
+</ul>
+
+<footer>
+  Student coursework project. Not a commercial product and not distributed on any app
+  store. Contact: via the GitHub repository linked above.
+</footer>
+
+</body>
+</html>

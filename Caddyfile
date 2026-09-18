@@ -1,0 +1,12 @@
+# TLS front for the M1 backend.
+#
+# sslip.io resolves 3.218.47.84.sslip.io -> 3.218.47.84, which gives Let's Encrypt
+# a real hostname to issue against. Caddy obtains and renews the certificate on
+# its own via the HTTP-01 challenge on port 80.
+#
+# reverse_proxy passes Upgrade/Connection through unchanged, so the websocket
+# relay at /ws/pixels works over wss:// with no extra configuration.
+3.218.47.84.sslip.io {
+	encode gzip
+	reverse_proxy backend:3000
+}

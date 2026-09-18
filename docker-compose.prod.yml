@@ -1,0 +1,50 @@
+# Production overlay: adds the TLS terminator and the hardening the deployed host
+# needs but a local developer run does not.
+#
+# Kept separate from docker-compose.yml so the file the TAs run locally stays
+# exactly as the course template shipped it.
+name: cpen321-project
+
+services:
+  backend:
+    # The template does not set a restart policy, so a host reboot would leave the
+    # back-end down until someone noticed. M1 requires the server to stay reachable
+    # from the deadline until grades are posted.
+    restart: unless-stopped
+    # Container logs filled the 8 GB root volume once already, which took mongo down
+    # with it. Cap them.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  mongo:
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - backend
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  caddy-data:
+  caddy-config:

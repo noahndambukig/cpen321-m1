@@ -18,11 +18,11 @@ fun localProperty(name: String, default: String = ""): String =
     localProperties.getProperty(name)?.trim()?.removeSurrounding("\"") ?: default
 
 android {
-    namespace = "com.example.cpen321application"
+    namespace = "com.noah.demo"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.example.cpen321application"
+        applicationId = "com.noah.demo"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
@@ -44,8 +44,23 @@ android {
         )
     }
 
+    signingConfigs {
+        create("release") {
+            // Values live in local.properties (gitignored) so the keystore password
+            // never enters version control. Falls back to unsigned if absent.
+            val storePath = localProperty("RELEASE_STORE_FILE")
+            if (storePath.isNotEmpty()) {
+                storeFile = rootProject.file(storePath)
+                storePassword = localProperty("RELEASE_STORE_PASSWORD")
+                keyAlias = localProperty("RELEASE_KEY_ALIAS")
+                keyPassword = localProperty("RELEASE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -79,6 +94,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.okhttp)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

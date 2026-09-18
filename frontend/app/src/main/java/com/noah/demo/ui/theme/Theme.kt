@@ -1,4 +1,4 @@
-package com.example.cpen321application.ui.theme
+package com.noah.demo.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun CPEN321ApplicationTheme(
+fun NoahDemoTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
