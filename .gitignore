@@ -61,3 +61,8 @@ M1_Doc.pdf
 
 # Codex review artifacts, not part of the submission
 .review/
+
+# Local helper for exporting the submission documents, and the built APK.
+# Neither belongs in the repo the TAs clone.
+scripts-local/
+submission/
